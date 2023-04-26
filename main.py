@@ -18,10 +18,10 @@ button_a = Button(12)
 button_b = Button(13)
 button_y = Button(15)
 
-import network
+
 import time
 #from time import localtime
-from umqtt.simple import MQTTClient
+
 
 import utime
 from utime import localtime
@@ -40,10 +40,6 @@ def time_2():
     Ddateandtime_2 = "{00}:{00}"
     timey = Ddateandtime_2.format(Dhour, Dmin)
     return timey
-        
-
-mqtt_server = 'broker.mqttdashboard.com'
-client_id = 'bigles'
 
 TEMPCOLOUR = display.create_pen(0, 0, 0)  # this colour will get changed in a bit
 WHITE = display.create_pen(255, 255, 255)
@@ -108,35 +104,6 @@ def describe_humidity(humidity):
         display.set_pen(RED)
     return description
 
-    
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect("AirTrafficControlTower","ny00000m")
-#if wlan.connect == True:
- #   print('wlan.isconnected()')
-  #  time.sleep(3)
-#else:
- #   print('wlan is not connected')
-  #  time.sleep(3)
-
-#mqtt_server = 'eu1.cloud.thethings.network:8883'
-#client_id = 'clientId-MHAN0dMVMC'
-#username = 'cheribim-app@ttn'
-#password = 'NNSXS.PJ3XCNSTVNASIOQJD77SKYFVO2Y7TMSD6ULH34Q.EONU7BWNI4QHLAEAEMBRRESOXSZTDNHDKJILFQXQP4O2XC2HZ3SA'
-mqtt_server = 'broker.mqttdashboard.com'
-client_id = 'bigles'
-
-#def mqtt_connect():
-   # client = MQTTClient(client_id, mqtt_server, keepalive=3600)
-   # client.connect()
-    #print('Connected to %s MQTT Broker'%(mqtt_server))
-    #return client
-
-#def reconnect():
-    #print('Failed to connect to the MQTT Broker. Reconnecting...')
-    #time.sleep(5)
-    #machine.reset()
-    
 while True:
     
     display.set_pen(BLACK)
@@ -171,12 +138,6 @@ while True:
 
     rand = random.randint(1, 1)
     
-     #if rand == 1: 
-        
-        #topic_pub_1 = b'Temp'
-        #topic_pub_2 = b'Humidity'
-        #topic_pub_3 = b'Pressure'
-            
             
     temperature, pressure, humidity = bme.read()
             
@@ -184,18 +145,7 @@ while True:
     topic_msg_1 = str('temperature:' + ' ' + '{:.1f}'.format(temperature) + ' ' + 'C')
     topic_msg_2 = str('humidity:' + ' ' + '{:.0f}'.format(humidity) + ' ' + '%')
     topic_msg_3 = str('pressure:' + ' ' + '{:.0f}'.format(revised_pressure) + ' ' + 'hPa')
-            
-        #try:
-            #client = mqtt_connect()
-        
-        # except OSError as e:
-            # reconnect()
-
-        #client.publish(topic_pub_1, topic_msg_1)
-        #client.publish(topic_pub_2, topic_msg_2)
-        #client.publish(topic_pub_3, topic_msg_3)
-            
-    #print(topic_msg_1, topic_msg_2, topic_msg_3)
+    
     time.update()   
     display.update()
     
