@@ -139,8 +139,7 @@ while True:
     topic_msg_1 = str('temperature:' + ' ' + '{:.1f}'.format(temperature) + ' ' + 'C')
     topic_msg_2 = str('humidity:' + ' ' + '{:.0f}'.format(humidity) + ' ' + '%')
     topic_msg_3 = str('pressure:' + ' ' + '{:.0f}'.format(revised_pressure) + ' ' + 'hPa')
-    
-    time.update()   
+       
     display.update()
     
     time.sleep(1)
